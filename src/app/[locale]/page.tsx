@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LanguageSwitcher } from "@/components/language-switcher";
-import { DEFAULT_LOCALE, isLocale, type Locale } from "@/i18n/config";
+import {
+  DEFAULT_LOCALE,
+  isLocale,
+  locales,
+  type Locale,
+} from "@/i18n/config";
 import { getDictionary } from "@/i18n/get-dictionary";
 
 export const dynamic = "force-dynamic";
@@ -23,18 +29,74 @@ function resolveLocale(locale?: string): Locale {
   notFound();
 }
 
+function resolveRegionLocale(locale: Locale): string {
+  if (locale === "zh") {
+    return "zh-CN";
+  }
+
+  if (locale === "ar") {
+    return "ar-EG";
+  }
+
+  return "en-US";
+}
+
+type GenerateMetadataProps = {
+  params: PageParams;
+};
+
+export async function generateMetadata({
+  params,
+}: GenerateMetadataProps): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale = resolveLocale(rawLocale);
+  const dictionary = await getDictionary(locale);
+  const languages = Object.fromEntries(
+    locales.map((availableLocale) => {
+      const hreflang =
+        availableLocale === "zh"
+          ? "zh"
+          : availableLocale === "ar"
+            ? "ar"
+            : "en";
+
+      return [hreflang, `/${availableLocale}`];
+    }),
+  ) as Record<string, string>;
+
+  languages["x-default"] = `/${DEFAULT_LOCALE}`;
+
+  return {
+    title: dictionary.hero.title,
+    description: dictionary.hero.subtitle,
+    alternates: {
+      canonical: `/${locale}`,
+      languages,
+    },
+    openGraph: {
+      title: dictionary.hero.title,
+      description: dictionary.hero.subtitle,
+      url: `/${locale}`,
+      locale: resolveRegionLocale(locale),
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dictionary.hero.title,
+      description: dictionary.hero.subtitle,
+    },
+  };
+}
+
 export default async function LocaleHome({ params }: PageProps) {
   const { locale: rawLocale } = await params;
   const locale = resolveLocale(rawLocale);
   const dictionary = await getDictionary(locale);
 
-  const formatter = new Intl.DateTimeFormat(
-    locale === "zh" ? "zh-CN" : locale === "ar" ? "ar-EG" : "en-US",
-    {
-      dateStyle: "full",
-      timeStyle: "long",
-    },
-  );
+  const formatter = new Intl.DateTimeFormat(resolveRegionLocale(locale), {
+    dateStyle: "full",
+    timeStyle: "long",
+  });
   const renderedAt = formatter.format(new Date());
 
   return (
