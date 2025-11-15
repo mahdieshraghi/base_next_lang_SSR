@@ -1,4 +1,5 @@
 import type { Dictionary } from "./types";
+import { createLanguagesObject } from "./helpers";
 
 const dictionary: Dictionary = {
   navigation: {
@@ -7,7 +8,7 @@ const dictionary: Dictionary = {
   hero: {
     title: "Multilingual SSR Demo",
     subtitle:
-      "Experience a server-rendered Next.js page with instant locale switching for English, Arabic, and Chinese.",
+      "Experience a server-rendered Next.js page with instant locale switching for English, Arabic, Chinese, Persian, Turkish, and French.",
     primaryCta: "Explore Features",
   },
   features: {
@@ -23,11 +24,7 @@ const dictionary: Dictionary = {
     title: "Server-rendered snapshot",
     renderedAtLabel: "Rendered on",
   },
-  languages: {
-    en: "English",
-    ar: "العربية",
-    zh: "中文",
-  },
+  languages: createLanguagesObject(),
 };
 
 export default dictionary;

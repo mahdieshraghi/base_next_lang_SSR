@@ -39,3 +39,15 @@ Update locale strings under `src/i18n/dictionaries/`. Add new languages by exten
 - Ensure the platform honours the Edge Middleware (`middleware.ts`)
 
 Enjoy building!
+
+
+npm run build
+
+# 2. شروع با PM2
+npm run pm2:start
+
+# 3. بررسی وضعیت
+npm run pm2:status
+
+# 4. مشاهده لاگ‌ها
+npm run pm2:logs

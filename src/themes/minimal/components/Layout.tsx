@@ -24,7 +24,7 @@ export function Layout(props: ThemeProps) {
             <PageHero {...props} />
             <PageFeatures {...props} />
           </div>
-          {/* <Footer /> */}
+          <Footer />
         </main>
       </div>
     </div>

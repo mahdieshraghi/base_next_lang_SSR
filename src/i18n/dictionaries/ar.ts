@@ -1,4 +1,5 @@
 import type { Dictionary } from "./types";
+import { createLanguagesObject } from "./helpers";
 
 const dictionary: Dictionary = {
   navigation: {
@@ -7,7 +8,7 @@ const dictionary: Dictionary = {
   hero: {
     title: "عرض متعدد اللغات مع SSR",
     subtitle:
-      "جرّب صفحة Next.js مُولدة على الخادم مع تبديل فوري بين الإنجليزية والعربية والصينية.",
+      "جرّب صفحة Next.js مُولدة على الخادم مع تبديل فوري بين الإنجليزية والعربية والصينية والفارسية والتركية.",
     primaryCta: "استكشف المزايا",
   },
   features: {
@@ -23,11 +24,13 @@ const dictionary: Dictionary = {
     title: "لقطة مولدة على الخادم",
     renderedAtLabel: "وقت التوليد",
   },
-  languages: {
+  languages: createLanguagesObject({
     en: "الإنجليزية",
     ar: "العربية",
     zh: "الصينية",
-  },
+    fa: "الفارسية",
+    tr: "التركية",
+  }),
 };
 
 export default dictionary;

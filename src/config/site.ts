@@ -24,7 +24,7 @@ export function getSiteUrl(): string {
 export const siteMetadata = {
   title: "Multilingual SSR Demo",
   description:
-    "A server-rendered Next.js starter showcasing locale-aware routing for English, Arabic, and Chinese.",
+    "A server-rendered Next.js starter showcasing locale-aware routing for English, Arabic, Chinese, Persian, and Turkish.",
   keywords: [
     "Next.js",
     "Server Side Rendering",
@@ -32,6 +32,10 @@ export const siteMetadata = {
     "Arabic",
     "Chinese",
     "English",
+    "Persian",
+    "Farsi",
+    "Turkish",
+    "Türkçe",
   ],
 };
 

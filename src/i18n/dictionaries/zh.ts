@@ -1,4 +1,5 @@
 import type { Dictionary } from "./types";
+import { createLanguagesObject } from "./helpers";
 
 const dictionary: Dictionary = {
   navigation: {
@@ -7,7 +8,7 @@ const dictionary: Dictionary = {
   hero: {
     title: "多语言 SSR 示例",
     subtitle:
-      "体验一个支持英文、阿拉伯语与中文的服务端渲染 Next.js 页面，并可即时切换语言。",
+      "体验一个支持英文、阿拉伯语、中文、波斯语和土耳其语的服务端渲染 Next.js 页面，并可即时切换语言。",
     primaryCta: "查看功能",
   },
   features: {
@@ -23,11 +24,13 @@ const dictionary: Dictionary = {
     title: "服务端渲染信息",
     renderedAtLabel: "渲染时间",
   },
-  languages: {
+  languages: createLanguagesObject({
     en: "英语",
     ar: "阿拉伯语",
     zh: "中文",
-  },
+    fa: "波斯语",
+    tr: "土耳其语",
+  }),
 };
 
 export default dictionary;
