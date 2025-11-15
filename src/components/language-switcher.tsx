@@ -1,6 +1,9 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter, usePathname } from "next/navigation";
 import type { Locale } from "@/i18n/config";
 import { locales } from "@/i18n/config";
+import { languagesConfig } from "@/i18n/locales-config";
 
 type LanguageSwitcherProps = {
   activeLocale: Locale;
@@ -13,27 +16,52 @@ export function LanguageSwitcher({
   labels,
   label,
 }: LanguageSwitcherProps) {
-  return (
-    <nav aria-label={label} className="flex items-center gap-2">
-      {locales.map((locale) => {
-        const isActive = locale === activeLocale;
+  const router = useRouter();
+  const pathname = usePathname();
 
-        return (
-          <Link
-            key={locale}
-            href={`/${locale}`}
-            className={`rounded-full border px-3 py-1 text-sm transition ${
-              isActive
-                ? "border-blue-600 bg-blue-600 text-white"
-                : "border-zinc-400 text-zinc-700 hover:border-blue-600 hover:text-blue-600"
-            }`}
-            aria-current={isActive ? "page" : undefined}
-          >
-            {labels[locale]}
-          </Link>
-        );
-      })}
-    </nav>
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newLocale = e.target.value as Locale;
+    const currentPath = pathname.replace(`/${activeLocale}`, "");
+    router.push(`/${newLocale}${currentPath}`);
+  };
+
+  return (
+    <div className="relative">
+      <label htmlFor="language-select" className="sr-only">
+        {label}
+      </label>
+      <select
+        id="language-select"
+        value={activeLocale}
+        onChange={handleLanguageChange}
+        className="appearance-none bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-lg px-4 py-2 pr-10 text-sm font-medium text-zinc-700 dark:text-zinc-300 cursor-pointer hover:border-blue-500 dark:hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors min-w-[140px]"
+        aria-label={label}
+      >
+        {locales.map((locale) => {
+          const config = languagesConfig[locale];
+          return (
+            <option key={locale} value={locale}>
+              {config.flag} {labels[locale]}
+            </option>
+          );
+        })}
+      </select>
+      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+        <svg
+          className="h-4 w-4 text-zinc-500 dark:text-zinc-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+      </div>
+    </div>
   );
 }
 

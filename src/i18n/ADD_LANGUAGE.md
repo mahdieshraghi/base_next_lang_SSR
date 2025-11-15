@@ -25,6 +25,7 @@ export const languagesConfig: Record<string, LanguageConfig> = {
     region: "fr-FR",
     rtl: false,
     label: "Français",
+    flag: "🇫🇷", // Emoji flag for the language
   },
 };
 ```
@@ -59,6 +60,7 @@ const dictionaries: Record<Locale, Dictionary> = {
 - **region**: کد منطقه برای locale (مثلاً `fr-FR`, `de-DE`)
 - **rtl**: `true` برای زبان‌های راست به چپ (عربی، فارسی)، `false` برای بقیه
 - **label**: نام زبان به زبان خودش (مثلاً "Français" برای فرانسوی)
+- **flag**: پرچم emoji برای زبان (مثلاً "🇫🇷" برای فرانسوی)
 
 ## مثال کامل: اضافه کردن زبان فرانسوی
 
