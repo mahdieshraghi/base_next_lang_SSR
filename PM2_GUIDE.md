@@ -175,3 +175,4 @@ npm run pm2:restart
 4. **Memory Limit**: اگر memory بیش از 1GB شود، برنامه restart می‌شود
 5. **Logs**: لاگ‌ها در پوشه `logs/` ذخیره می‌شوند
 
+

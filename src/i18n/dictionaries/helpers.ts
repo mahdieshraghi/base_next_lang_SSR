@@ -17,3 +17,4 @@ export function createLanguagesObject(
   return languages as Record<Locale, string>;
 }
 
+

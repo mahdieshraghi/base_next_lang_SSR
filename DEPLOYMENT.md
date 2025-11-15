@@ -119,3 +119,4 @@ docker build -t multilingual-ssr .
 docker run -p 3000:3000 multilingual-ssr
 ```
 
+

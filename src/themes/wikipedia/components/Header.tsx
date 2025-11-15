@@ -31,3 +31,4 @@ export function Header({ locale, dictionary }: ThemeProps) {
   );
 }
 
+
