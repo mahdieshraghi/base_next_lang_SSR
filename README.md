@@ -1,37 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Multilingual SSR Demo
 
-## Getting Started
+A production-ready Next.js (App Router) starter that renders content on the server and serves three fully localized experiences (English, Arabic, Chinese).
 
-First, run the development server:
+### Features
+- Server-side rendering for every locale
+- Middleware-driven locale redirects with RTL awareness
+- Locale dictionaries loaded on demand
+- Dynamic metadata (canonical, hreflang, Open Graph, Twitter)
+- Auto-generated `robots.txt` and `sitemap.xml`
 
+### Prerequisites
+- Node.js 18+
+- npm 9+ (or any compatible package manager)
+
+### Getting Started
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev -- --webpack
 ```
+The dev server runs at `http://localhost:3000` (override with `--port` or `NEXT_PUBLIC_SITE_URL`).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Available Scripts
+- `npm run dev` &mdash; start the dev server (Webpack flag recommended for stability on current Next 16.0.1)
+- `npm run build` &mdash; create a production build
+- `npm run start` &mdash; run the production build
+- `npm run lint` &mdash; run ESLint
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Configuration
+| Variable | Description | Default |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Public origin used for metadata/SEO (no trailing slash) | `http://localhost:3000` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Update locale strings under `src/i18n/dictionaries/`. Add new languages by extending `src/i18n/config.ts` and creating a dictionary module.
 
-## Learn More
+### Deployment Checklist
+- Set `NEXT_PUBLIC_SITE_URL` to your production domain
+- Run `npm run build` to verify the bundle
+- Ensure the platform honours the Edge Middleware (`middleware.ts`)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# base_next_lang_SSR
+Enjoy building!

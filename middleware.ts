@@ -21,17 +21,11 @@ export function middleware(request: NextRequest) {
     return;
   }
 
-  const locale = DEFAULT_LOCALE;
-
   return NextResponse.redirect(
-    new URL(
-      `/${locale}${pathname.startsWith("/") ? pathname : `/${pathname}`}`,
-      request.url,
-    ),
+    new URL(`/${DEFAULT_LOCALE}${pathname}`, request.url),
   );
 }
 
 export const config = {
   matcher: ["/((?!_next|.*\\..*).*)"],
 };
-

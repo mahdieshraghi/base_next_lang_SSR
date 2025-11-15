@@ -1,0 +1,278 @@
+/* Glass Theme Styles */
+
+/* CSS Variables */
+[data-theme="glass"] {
+  --bg-primary: #667eea;
+  --bg-secondary: rgba(255, 255, 255, 0.05);
+  --bg-card: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(255, 255, 255, 0.2);
+  --shadow-sm: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --shadow-md: 0 8px 32px 0 rgba(31, 38, 135, 0.5);
+  --shadow-xl: 0 20px 60px 0 rgba(31, 38, 135, 0.6);
+  --gradient-start: rgba(102, 126, 234, 0.3);
+  --gradient-mid: rgba(255, 255, 255, 0.1);
+  --gradient-end: rgba(250, 147, 251, 0.3);
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --accent: rgba(255, 255, 255, 0.9);
+  --accent-hover: rgba(255, 255, 255, 1);
+}
+
+/* Glass morphism utilities */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+  color: #111827; /* Dark text for readability */
+}
+
+.glass-button {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Theme-specific styles */
+[data-theme="glass"] body {
+  background: var(--bg-primary);
+  min-height: 100vh;
+  background-attachment: fixed;
+}
+
+[data-theme="glass"] main {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-attachment: fixed;
+}
+
+[data-theme="glass"] header {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="glass"] #features {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="glass"] article {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  color: #111827;
+}
+
+[data-theme="glass"] .server-info {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  color: #111827;
+}
+
+[data-theme="glass"] .server-info p {
+  color: #374151;
+}
+
+[data-theme="glass"] footer {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="glass"] .cta-button {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: #111827;
+}
+
+[data-theme="glass"] .cta-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+[data-theme="glass"] .feature-number {
+  color: #111827;
+}
+
+/* Shared Component Styles */
+[data-theme="glass"] .page-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+[data-theme="glass"] .page-hero-title {
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+@media (min-width: 640px) {
+  [data-theme="glass"] .page-hero-title {
+    font-size: 3rem;
+  }
+}
+
+[data-theme="glass"] .page-hero-subtitle {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+@media (min-width: 640px) {
+  [data-theme="glass"] .page-hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+[data-theme="glass"] .page-hero-button {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: #111827;
+}
+
+[data-theme="glass"] .page-hero-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+[data-theme="glass"] .page-features {
+  display: grid;
+  gap: 1.5rem;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  [data-theme="glass"] .page-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  [data-theme="glass"] .page-features {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+[data-theme="glass"] .page-features-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  grid-column: 1 / -1;
+  color: #111827;
+}
+
+@media (min-width: 640px) {
+  [data-theme="glass"] .page-features-title {
+    font-size: 1.875rem;
+  }
+}
+
+[data-theme="glass"] .page-features-list {
+  grid-column: 1 / -1;
+  display: contents;
+}
+
+[data-theme="glass"] .page-feature-item {
+  border-radius: 1rem;
+  border: 1px solid var(--glass-border);
+  padding: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.75;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #111827;
+  transition: all 0.2s;
+}
+
+[data-theme="glass"] .page-feature-item:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+}
+
+[data-theme="glass"] .page-feature-number {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+[data-theme="glass"] .page-server-info {
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+  color: #111827;
+}
+
+[data-theme="glass"] .page-server-info-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+[data-theme="glass"] .page-server-info-text {
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  color: #374151;
+}
+
+[data-theme="glass"] .page-server-info-time {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+[data-theme="glass"] .page-footer {
+  margin-top: 3rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+

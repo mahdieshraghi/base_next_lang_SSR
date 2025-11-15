@@ -15,3 +15,4 @@ export async function getDictionary(locale: Locale): Promise<Dictionary> {
   return dictionaryModule.default;
 }
 
+
